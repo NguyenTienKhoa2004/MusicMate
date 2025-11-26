@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Application", "MusicMate.Application\MusicMate.Application.csproj", "{ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Domain", "MusicMate.Domain\MusicMate.Domain.csproj", "{C834862D-48AB-4338-9E64-3E9E20AEA537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Infrastructure", "MusicMate.Infrastructure\MusicMate.Infrastructure.csproj", "{B25AC668-ACF4-4DDE-8182-7E418D49B0BA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815} = {ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Shared", "MusicMate.Shared\MusicMate.Shared.csproj", "{508C4FC3-5453-4253-8AF7-FE01D2285FF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Api", "MusicMate.Api\MusicMate.Api.csproj", "{0E23B5EC-4958-42DB-B317-2A63C6FEA43B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF8D3CC-A621-4C65-A1F0-EB7E5C4C7815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C834862D-48AB-4338-9E64-3E9E20AEA537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C834862D-48AB-4338-9E64-3E9E20AEA537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C834862D-48AB-4338-9E64-3E9E20AEA537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C834862D-48AB-4338-9E64-3E9E20AEA537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B25AC668-ACF4-4DDE-8182-7E418D49B0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B25AC668-ACF4-4DDE-8182-7E418D49B0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B25AC668-ACF4-4DDE-8182-7E418D49B0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B25AC668-ACF4-4DDE-8182-7E418D49B0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E23B5EC-4958-42DB-B317-2A63C6FEA43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E23B5EC-4958-42DB-B317-2A63C6FEA43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E23B5EC-4958-42DB-B317-2A63C6FEA43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E23B5EC-4958-42DB-B317-2A63C6FEA43B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89582283-8FE9-4851-9F9F-070A168F3FDD}
+	EndGlobalSection
+EndGlobal

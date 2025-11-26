@@ -1,0 +1,84 @@
+## ====================
+## Visual Studio / .NET
+## ====================
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio cache
+.vs/
+.vscode/
+*.code-workspace
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# .NET Core / ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# NuGet
+*.nuget
+packages/
+global.json
+
+# Rider
+.idea/
+
+# Rider / ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# Secrets & Local Settings
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+*.env
+*.local
+
+# Test results
+[Tt]est[Rr]esult*/
+*.coverage
+*.coveragexml
+
+# Publish folder
+/wwwroot/dist/
+/publish/
+/deploy/
+
+# Node / Frontend (nếu có Blazor WASM hoặc React sau này)
+/node_modules/
+/wwwroot/node_modules/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Migration backup (nếu không muốn commit)
+**/Migrations/*_backup.cs
