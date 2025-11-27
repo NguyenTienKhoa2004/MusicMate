@@ -8,3 +8,4 @@ public record RegisterRequest(
     [Required] [MinLength(6)] string Password,
     string? DisplayName = null
 );
+

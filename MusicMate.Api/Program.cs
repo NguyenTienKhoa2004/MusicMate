@@ -2,6 +2,8 @@
 using MusicMate.Application.Common.Interfaces; 
 using MusicMate.Application.Features.Auth.Commands; 
 using Microsoft.EntityFrameworkCore;
+using MusicMate.Application.Contracts;
+using MusicMate.Infrastructure.Services;
 using System.Reflection; 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,7 @@ builder.Services.AddDbContext<MusicMateDbContext>(options =>
 
 builder.Services.AddScoped<IMusicMateDbContext>(provider => 
     provider.GetRequiredService<MusicMateDbContext>());
-
+builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(RegisterCommandHandler).Assembly);
 });
