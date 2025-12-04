@@ -20,7 +20,14 @@ public class MusicMateDbContext : DbContext, IMusicMateDbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        
+        modelBuilder.Entity<MusicGenre>().HasData(
+            new MusicGenre { Id = 1, Name = "Pop" },
+            new MusicGenre { Id = 2, Name = "Rock" },
+            new MusicGenre { Id = 3, Name = "Hip-Hop" },
+            new MusicGenre { Id = 4, Name = "Ballad" },
+            new MusicGenre { Id = 5, Name = "R&B" },
+            new MusicGenre { Id = 6, Name = "Indie" }
+        );
         modelBuilder.Entity<Matching>(eb =>
         {
             eb.HasKey(m => m.Id);

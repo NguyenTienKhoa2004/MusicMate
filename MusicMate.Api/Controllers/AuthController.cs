@@ -5,17 +5,17 @@ using MusicMate.Application.Features.Auth.Requests;
 
 namespace MusicMate.API.Controllers;
 
-[Route("api/[controller]")] 
-[ApiController]          
+[Route("api/[controller]")]
+[ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly IMediator _mediator; 
+    private readonly IMediator _mediator;
 
     public AuthController(IMediator mediator)
     {
         _mediator = mediator;
     }
-    
+
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
@@ -24,9 +24,25 @@ public class AuthController : ControllerBase
         try
         {
             var token = await _mediator.Send(command);
-            
+
             return Ok(new { Token = token });
         }
+        catch (Exception ex)
+        {
+            return BadRequest(new { Message = ex.Message });
+        }
+    }
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    {
+        var command = new LoginCommand(request);
+
+        try
+        {
+            var token = await _mediator.Send(command);
+            return Ok(new { Token = token });
+        }
+
         catch (Exception ex)
         {
             return BadRequest(new { Message = ex.Message });
