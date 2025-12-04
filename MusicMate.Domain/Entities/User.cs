@@ -13,7 +13,6 @@ public class User
     public string? AvatarUrl { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    // Navigation
     public ICollection<UserFavoriteGenre> FavoriteGenres { get; set; } = new List<UserFavoriteGenre>();
     public ICollection<Matching> MatchesAsUser1 { get; set; } = new List<Matching>();
     public ICollection<Matching> MatchesAsUser2 { get; set; } = new List<Matching>();
