@@ -7,15 +7,8 @@ namespace MusicMate.Application.Features.Users.Commands;
 
 public record SetUserGenresCommand(Guid UserId, List<int> GenreIds) : IRequest<bool>;
 
-public class SetUserGenresCommandHandler : IRequestHandler<SetUserGenresCommand, bool>
+public class SetUserGenresCommandHandler(IMusicMateDbContext _db) : IRequestHandler<SetUserGenresCommand, bool>
 {
-    private readonly IMusicMateDbContext _db;
-
-    public SetUserGenresCommandHandler(IMusicMateDbContext db)
-    {
-        _db = db;
-    }
-
     public async Task<bool> Handle(SetUserGenresCommand request, CancellationToken ct)
     {
         var oldGenres = await _db.UserFavoriteGenres

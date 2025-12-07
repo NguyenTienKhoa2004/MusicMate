@@ -12,17 +12,8 @@ using BCrypt.Net;
 
 namespace MusicMate.Application.Features.Auth.Commands;
 
-public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
+public class LoginCommandHandler(IMusicMateDbContext _db, IConfiguration _config) : IRequestHandler<LoginCommand, string>
 {
-    private readonly IMusicMateDbContext _db; 
-    private readonly IConfiguration _config;
-
-    public LoginCommandHandler(IMusicMateDbContext db, IConfiguration config)
-    {
-        _db = db;
-        _config = config;
-    }
-
     public async Task<string> Handle(LoginCommand command, CancellationToken cancellationToken)
     {
         var request = command.LoginRequest;

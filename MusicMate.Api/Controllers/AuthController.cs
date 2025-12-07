@@ -7,23 +7,15 @@ namespace MusicMate.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController : ControllerBase
+public class AuthController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    public AuthController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
         var command = new RegisterCommand(request);
-
         try
         {
-            var token = await _mediator.Send(command);
+            var token = await mediator.Send(command);
 
             return Ok(new { Token = token });
         }
@@ -36,13 +28,11 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var command = new LoginCommand(request);
-
         try
         {
-            var token = await _mediator.Send(command);
+            var token = await mediator.Send(command);
             return Ok(new { Token = token });
         }
-
         catch (Exception ex)
         {
             return BadRequest(new { Message = ex.Message });
