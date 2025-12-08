@@ -18,10 +18,10 @@ public class GetMatchingUsersQueryHandler(IMusicMateDbContext _db) : IRequestHan
 
         if (!myGenreIds.Any()) return new List<MatchCandidateDto>(); 
         
-        var candidates = await _db.Users
+        var matched_users = await _db.Users
             .Include(u => u.FavoriteGenres)
             .ThenInclude(fg => fg.Genre)
-            .Where(u => u.Id != request.CurrentUserId) // Khác mình
+            .Where(u => u.Id != request.CurrentUserId) 
             .Where(u => u.FavoriteGenres.Any(fg => myGenreIds.Contains(fg.GenreId))) 
             .Select(u => new 
             {
@@ -33,22 +33,22 @@ public class GetMatchingUsersQueryHandler(IMusicMateDbContext _db) : IRequestHan
         
         var result = new List<MatchCandidateDto>();
 
-        foreach (var item in candidates)
+        foreach (var each_user in matched_users)
         {
-            var theirGenreIds = item.GenreNames.Select(g => g.GenreId).ToList();
-            var commonGenreIds = myGenreIds.Intersect(theirGenreIds).ToList();
+            var theirGenreIds = each_user.GenreNames.Select(g => g.GenreId).ToList();
+            var sameGenres = myGenreIds.Intersect(theirGenreIds).ToList();
             
-            double score = (double)commonGenreIds.Count / myGenreIds.Count * 100;
+            double score = (double)sameGenres.Count / myGenreIds.Count * 100;
             
-            var commonGenreNames = item.GenreNames
-                .Where(g => commonGenreIds.Contains(g.GenreId))
+            var commonGenreNames = each_user.GenreNames
+                .Where(g => sameGenres.Contains(g.GenreId))
                 .Select(g => g.Name)
                 .ToList();
 
             result.Add(new MatchCandidateDto
             {
-                UserId = item.User.Id,
-                DisplayName = item.User.DisplayName,
+                UserId = each_user.User.Id,
+                DisplayName = each_user.User.DisplayName,
                 MatchPercentage = (int)score,
                 CommonGenres = commonGenreNames
             });
