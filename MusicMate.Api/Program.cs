@@ -8,10 +8,11 @@ using MusicMate.Infrastructure.Services;
 using System.Text; 
 using Microsoft.IdentityModel.Tokens; 
 using Microsoft.OpenApi.Models; 
+using MusicMate.Infrastructure.Hubs; 
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSignalR();
 builder.Services.AddDbContext<MusicMateDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -22,7 +23,7 @@ builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(RegisterCommandHandler).Assembly);
 });
-
+builder.Services.AddTransient<IChatNotifier, SignalRChatNotifier>();
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
 
@@ -102,5 +103,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<ChatHub>("/hub/chat");
 app.Run();

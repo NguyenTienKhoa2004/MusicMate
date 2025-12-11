@@ -12,21 +12,21 @@ public class GetMatchingUsersQueryHandler(IMusicMateDbContext _db) : IRequestHan
     public async Task<List<MatchCandidateDto>> Handle(GetMatchingUsersQuery request, CancellationToken ct)
     {
         var myGenreIds = await _db.UserFavoriteGenres
-            .Where(x => x.UserId == request.CurrentUserId)
-            .Select(x => x.GenreId)
+            .Where(x => x.user_id == request.CurrentUserId)
+            .Select(x => x.genre_id)
             .ToListAsync(ct);
 
         if (!myGenreIds.Any()) return new List<MatchCandidateDto>(); 
         
         var matched_users = await _db.Users
-            .Include(u => u.FavoriteGenres)
-            .ThenInclude(fg => fg.Genre)
-            .Where(u => u.Id != request.CurrentUserId) 
-            .Where(u => u.FavoriteGenres.Any(fg => myGenreIds.Contains(fg.GenreId))) 
+            .Include(u => u.favorite_genres)
+            .ThenInclude(fg => fg.genre)
+            .Where(u => u.id != request.CurrentUserId) 
+            .Where(u => u.favorite_genres.Any(fg => myGenreIds.Contains(fg.genre_id))) 
             .Select(u => new 
             {
                 User = u,
-                GenreNames = u.FavoriteGenres.Select(fg => new { fg.GenreId, fg.Genre.Name }).ToList() 
+                GenreNames = u.favorite_genres.Select(fg => new { GenreId = fg.genre_id, Name = fg.genre.name }).ToList() 
             })
             .Take(50) 
             .ToListAsync(ct);
@@ -47,8 +47,8 @@ public class GetMatchingUsersQueryHandler(IMusicMateDbContext _db) : IRequestHan
 
             result.Add(new MatchCandidateDto
             {
-                UserId = each_user.User.Id,
-                DisplayName = each_user.User.DisplayName,
+                UserId = each_user.User.id,
+                DisplayName = each_user.User.display_name,
                 MatchPercentage = (int)score,
                 CommonGenres = commonGenreNames
             });

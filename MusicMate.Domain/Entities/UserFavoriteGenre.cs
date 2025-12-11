@@ -2,9 +2,9 @@
 
 public class UserFavoriteGenre
 {
-    public Guid UserId { get; set; }
-    public User User { get; set; } = null!;
+    public Guid user_id { get; set; }
+    public User user { get; set; } = null!;
 
-    public int GenreId { get; set; }
-    public MusicGenre Genre { get; set; } = null!;
+    public int genre_id { get; set; }
+    public MusicGenre genre { get; set; } = null!;
 }

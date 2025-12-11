@@ -7,19 +7,13 @@ namespace MusicMate.Application.Features.Genres.Queries;
 
 public record GetAllGenresQuery : IRequest<List<GenreDto>>;
 
-public class GetAllGenresQueryHandler : IRequestHandler<GetAllGenresQuery, List<GenreDto>>
+public class GetAllGenresQueryHandler(IMusicMateDbContext db) : IRequestHandler<GetAllGenresQuery, List<GenreDto>>
 {
-    private readonly IMusicMateDbContext _db;
-
-    public GetAllGenresQueryHandler(IMusicMateDbContext db)
-    {
-        _db = db;
-    }
-
+    
     public async Task<List<GenreDto>> Handle(GetAllGenresQuery request, CancellationToken ct)
     {
-        return await _db.MusicGenres
-            .Select(g => new GenreDto(g.Id, g.Name))
+        return await db.MusicGenres
+            .Select(g => new GenreDto(g.id, g.name))
             .ToListAsync(ct);
     }
 }

@@ -2,7 +2,7 @@
 
 public class MusicGenre
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = null!; 
-    public ICollection<UserFavoriteGenre> Users { get; set; } = new List<UserFavoriteGenre>();
+    public int id { get; set; }
+    public string name { get; set; } = null!; 
+    public ICollection<UserFavoriteGenre> users { get; set; } = new List<UserFavoriteGenre>();
 }

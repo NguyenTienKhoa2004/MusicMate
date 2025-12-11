@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicMate.Infrastructure.Persistence;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MusicMate.Infrastructure.Migrations
 {
     [DbContext(typeof(MusicMateDbContext))]
-    partial class MusicMateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251210084749_AddMessageSchema")]
+    partial class AddMessageSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,122 +27,144 @@ namespace MusicMate.Infrastructure.Migrations
 
             modelBuilder.Entity("MusicMate.Domain.Entities.Matching", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("first_user_id")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("matched_time")
+                    b.Property<DateTime>("MatchedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("second_user_id")
+                    b.Property<Guid>("User1Id")
                         .HasColumnType("uuid");
 
-                    b.HasKey("id");
+                    b.Property<Guid>("User2Id")
+                        .HasColumnType("uuid");
 
-                    b.HasIndex("first_user_id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("second_user_id");
+                    b.HasIndex("User1Id");
+
+                    b.HasIndex("User2Id");
 
                     b.ToTable("Matches");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.Message", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("content")
+                    b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("create_time")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("receiver_id")
+                    b.Property<Guid>("ReceiverId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("sender_id")
+                    b.Property<Guid>("SenderId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("receiver_id");
+                    b.HasIndex("ReceiverId");
 
-                    b.HasIndex("sender_id");
+                    b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.MusicGenre", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("MusicGenres");
 
                     b.HasData(
                         new
                         {
-                            id = 1,
-                            name = "Pop"
+                            Id = 1,
+                            Name = "Pop"
                         },
                         new
                         {
-                            id = 2,
-                            name = "Rock"
+                            Id = 2,
+                            Name = "Rock"
                         },
                         new
                         {
-                            id = 3,
-                            name = "Hip-Hop"
+                            Id = 3,
+                            Name = "Hip-Hop"
                         },
                         new
                         {
-                            id = 4,
-                            name = "Ballad"
+                            Id = 4,
+                            Name = "Ballad"
                         },
                         new
                         {
-                            id = 5,
-                            name = "R&B"
+                            Id = 5,
+                            Name = "R&B"
                         },
                         new
                         {
-                            id = 6,
-                            name = "Indie"
+                            Id = 6,
+                            Name = "Indie"
                         },
                         new
                         {
-                            id = 7,
-                            name = "Jazz"
+                            Id = 7,
+                            Name = "Jazz"
                         },
                         new
                         {
-                            id = 8,
-                            name = "EDM"
+                            Id = 8,
+                            Name = "EDM"
                         });
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.User", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Bio")
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<string>("HashedPassword")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsOnline")
                         .HasColumnType("boolean");
@@ -147,42 +172,20 @@ namespace MusicMate.Infrastructure.Migrations
                     b.Property<DateTime>("LastActiveAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("bio")
+                    b.Property<string>("UserAvatar")
                         .HasColumnType("text");
 
-                    b.Property<string>("city")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<DateTime>("create_time")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("display_name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
-                    b.Property<string>("hashed_password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("user_avatar")
-                        .HasColumnType("text");
-
-                    b.Property<string>("username")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("email")
+                    b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("username")
+                    b.HasIndex("Username")
                         .IsUnique();
 
                     b.ToTable("Users");
@@ -190,92 +193,92 @@ namespace MusicMate.Infrastructure.Migrations
 
             modelBuilder.Entity("MusicMate.Domain.Entities.UserFavoriteGenre", b =>
                 {
-                    b.Property<Guid>("user_id")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("genre_id")
+                    b.Property<int>("GenreId")
                         .HasColumnType("integer");
 
-                    b.HasKey("user_id", "genre_id");
+                    b.HasKey("UserId", "GenreId");
 
-                    b.HasIndex("genre_id");
+                    b.HasIndex("GenreId");
 
                     b.ToTable("UserFavoriteGenres");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.Matching", b =>
                 {
-                    b.HasOne("MusicMate.Domain.Entities.User", "first_user")
-                        .WithMany("matches_at_first")
-                        .HasForeignKey("first_user_id")
+                    b.HasOne("MusicMate.Domain.Entities.User", "User1")
+                        .WithMany("MatchesAsUser1")
+                        .HasForeignKey("User1Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MusicMate.Domain.Entities.User", "second_user")
-                        .WithMany("matches_at_second")
-                        .HasForeignKey("second_user_id")
+                    b.HasOne("MusicMate.Domain.Entities.User", "User2")
+                        .WithMany("MatchesAsUser2")
+                        .HasForeignKey("User2Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("first_user");
+                    b.Navigation("User1");
 
-                    b.Navigation("second_user");
+                    b.Navigation("User2");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.Message", b =>
                 {
-                    b.HasOne("MusicMate.Domain.Entities.User", "receiver")
-                        .WithMany("received_messages")
-                        .HasForeignKey("receiver_id")
+                    b.HasOne("MusicMate.Domain.Entities.User", "Receiver")
+                        .WithMany("ReceivedMessages")
+                        .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MusicMate.Domain.Entities.User", "sender")
-                        .WithMany("sent_messages")
-                        .HasForeignKey("sender_id")
+                    b.HasOne("MusicMate.Domain.Entities.User", "Sender")
+                        .WithMany("SentMessages")
+                        .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("receiver");
+                    b.Navigation("Receiver");
 
-                    b.Navigation("sender");
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.UserFavoriteGenre", b =>
                 {
-                    b.HasOne("MusicMate.Domain.Entities.MusicGenre", "genre")
-                        .WithMany("users")
-                        .HasForeignKey("genre_id")
+                    b.HasOne("MusicMate.Domain.Entities.MusicGenre", "Genre")
+                        .WithMany("Users")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MusicMate.Domain.Entities.User", "user")
-                        .WithMany("favorite_genres")
-                        .HasForeignKey("user_id")
+                    b.HasOne("MusicMate.Domain.Entities.User", "User")
+                        .WithMany("FavoriteGenres")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("genre");
+                    b.Navigation("Genre");
 
-                    b.Navigation("user");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.MusicGenre", b =>
                 {
-                    b.Navigation("users");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MusicMate.Domain.Entities.User", b =>
                 {
-                    b.Navigation("favorite_genres");
+                    b.Navigation("FavoriteGenres");
 
-                    b.Navigation("matches_at_first");
+                    b.Navigation("MatchesAsUser1");
 
-                    b.Navigation("matches_at_second");
+                    b.Navigation("MatchesAsUser2");
 
-                    b.Navigation("received_messages");
+                    b.Navigation("ReceivedMessages");
 
-                    b.Navigation("sent_messages");
+                    b.Navigation("SentMessages");
                 });
 #pragma warning restore 612, 618
         }

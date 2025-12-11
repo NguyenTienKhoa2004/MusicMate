@@ -12,60 +12,46 @@ using System.Text;
 
 namespace MusicMate.Application.Features.Auth.Commands;
 
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, string>
+    public class RegisterCommandHandler(IMusicMateDbContext db, IConfiguration config, IPasswordHasher hasher) : IRequestHandler<RegisterCommand, string>
     {
-        private readonly IMusicMateDbContext _db;
-        private readonly IConfiguration _config;
-        private readonly IPasswordHasher _hasher;   
-
-        public RegisterCommandHandler(
-            IMusicMateDbContext db, 
-            IConfiguration config,
-            IPasswordHasher hasher)                 
-        {
-            _db = db;
-            _config = config;
-            _hasher = hasher;
-        }
-
         public async Task<string> Handle(RegisterCommand request, CancellationToken ct)
         {
             var req = request.Request;
 
-            bool exists = await _db.Users.AnyAsync(u =>
-                u.Username.ToLower() == req.Username.ToLower() ||
-                u.Email.ToLower() == req.Email.ToLower(), ct);
+            bool exists = await db.Users.AnyAsync(u =>
+                u.username.ToLower() == req.Username.ToLower() ||
+                u.email.ToLower() == req.Email.ToLower(), ct);
 
             if (exists)
                 throw new Exception("Username hoặc Email đã tồn tại");
 
             var user = new User
             {
-                Id = Guid.NewGuid(),
-                Username = req.Username.Trim(),
-                Email = req.Email.Trim().ToLower(),
-                HashedPassword = _hasher.HashPassword(req.Password),
-                DisplayName = req.DisplayName?.Trim() ?? req.Username,
-                CreatedAt = DateTime.UtcNow
+                id = Guid.NewGuid(),
+                username = req.Username.Trim(),
+                email = req.Email.Trim().ToLower(),
+                hashed_password = hasher.HashPassword(req.Password),
+                display_name = req.DisplayName?.Trim() ?? req.Username,
+                create_time = DateTime.UtcNow
             };
 
-            _db.Users.Add(user);
-            await _db.SaveChangesAsync(ct);
+            db.Users.Add(user);
+            await db.SaveChangesAsync(ct);
 
             return GenerateJwtToken(user);
         }
 
         private string GenerateJwtToken(User user)
         {
-            var jwtSettings = _config.GetSection("Jwt");
+            var jwtSettings = config.GetSection("Jwt");
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.username),
+                new Claim(JwtRegisteredClaimNames.Email, user.email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

@@ -18,13 +18,13 @@ public class LoginCommandHandler(IMusicMateDbContext _db, IConfiguration _config
     {
         var request = command.LoginRequest;
         
-        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.email == request.Email);
         
         if (user == null)
         {
             throw new Exception("User not found / Invalid credentials"); 
         }
-        bool isPasswordValid = VerifyPassword(request.Password, user.HashedPassword);
+        bool isPasswordValid = VerifyPassword(request.Password, user.hashed_password);
         
         if (!isPasswordValid)
         {
@@ -48,9 +48,9 @@ public class LoginCommandHandler(IMusicMateDbContext _db, IConfiguration _config
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim(JwtRegisteredClaimNames.Sub, user.id.ToString()),
+            new Claim(JwtRegisteredClaimNames.UniqueName, user.username),
+            new Claim(JwtRegisteredClaimNames.Email, user.email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 

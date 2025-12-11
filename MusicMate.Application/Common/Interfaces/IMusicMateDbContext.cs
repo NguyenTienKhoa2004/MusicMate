@@ -9,6 +9,7 @@ public interface IMusicMateDbContext
     DbSet<MusicGenre> MusicGenres { get; }
     DbSet<UserFavoriteGenre> UserFavoriteGenres { get; }
     DbSet<Matching> Matches { get; }
+    DbSet<Message> Messages { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

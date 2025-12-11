@@ -2,12 +2,12 @@
 
 public class Matching
 {
-    public Guid Id { get; set; }
-    public Guid User1Id { get; set; }
-    public User User1 { get; set; } = null!;
+    public Guid id { get; set; }
+    public Guid first_user_id { get; set; }
+    public User first_user { get; set; } = null!;
 
-    public Guid User2Id { get; set; }
-    public User User2 { get; set; } = null!;
+    public Guid second_user_id { get; set; }
+    public User second_user { get; set; } = null!;
 
-    public DateTime MatchedAt { get; set; } = DateTime.UtcNow;
+    public DateTime matched_time { get; set; } = DateTime.UtcNow;
 }

@@ -1,3 +1,3 @@
 namespace MusicMate.Application.Features.Genres.DTOs;
 
-public record GenreDto(int Id, string Name);
+public record GenreDto(int id, string name);

@@ -12,7 +12,7 @@ public class SetUserGenresCommandHandler(IMusicMateDbContext _db) : IRequestHand
     public async Task<bool> Handle(SetUserGenresCommand request, CancellationToken ct)
     {
         var oldGenres = await _db.UserFavoriteGenres
-            .Where(x => x.UserId == request.UserId)
+            .Where(x => x.user_id == request.UserId)
             .ToListAsync(ct);
         
         if (oldGenres.Any())
@@ -22,8 +22,8 @@ public class SetUserGenresCommandHandler(IMusicMateDbContext _db) : IRequestHand
         
         var newGenres = request.GenreIds.Select(genreId => new UserFavoriteGenre
         {
-            UserId = request.UserId,
-            GenreId = genreId
+            user_id = request.UserId,
+            genre_id = genreId
         });
 
         await _db.UserFavoriteGenres.AddRangeAsync(newGenres, ct);
