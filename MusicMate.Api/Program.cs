@@ -44,8 +44,34 @@ builder.Services.AddAuthentication(options =>
             ValidAudience = jwtSettings["Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(key)
         };
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+                
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) &&
+                    path.StartsWithSegments("/hub/chat"))
+                {
+                    // Gán token vào context để xác thực
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173") // Domain React
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials(); // <--- BẮT BUỘC PHẢI CÓ DÒNG NÀY CHO SIGNALR
+        });
+});
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -96,7 +122,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowReactApp");
 app.UseHttpsRedirection();
 
 app.UseAuthentication(); 

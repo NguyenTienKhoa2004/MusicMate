@@ -1,477 +1,96 @@
 Folder PATH listing for volume OS
 Volume serial number is F418-1723
 C:.
-¦   .gitignore
-¦   MusicMate.sln
-¦   MusicMate.sln.DotSettings.user
-¦   structure.txt
-¦   
+ï¿½   .gitignore
+ï¿½   MusicMate.sln
+ï¿½   MusicMate.sln.DotSettings.user
+ï¿½   structure.txt
+ï¿½   
 +---.idea
-¦   +---.idea.MusicMate
-¦       +---.idea
-¦               .gitignore
-¦               indexLayout.xml
-¦               material_theme_project_new.xml
-¦               projectSettingsUpdater.xml
-¦               vcs.xml
-¦               workspace.xml
-¦               
+ï¿½   +---.idea.MusicMate
+ï¿½       +---.idea
+ï¿½               .gitignore
+ï¿½               indexLayout.xml
+ï¿½               material_theme_project_new.xml
+ï¿½               projectSettingsUpdater.xml
+ï¿½               vcs.xml
+ï¿½               workspace.xml
+ï¿½               
 +---MusicMate.Api
-¦   ¦   appsettings.Development.json
-¦   ¦   appsettings.json
-¦   ¦   MusicMate.Api.csproj
-¦   ¦   MusicMate.Api.csproj.user
-¦   ¦   Program.cs
-¦   ¦   
-¦   +---bin
-¦   ¦   +---Debug
-¦   ¦       +---net9.0
-¦   ¦           ¦   appsettings.Development.json
-¦   ¦           ¦   appsettings.json
-¦   ¦           ¦   BCrypt.Net-Next.dll
-¦   ¦           ¦   FluentValidation.AspNetCore.dll
-¦   ¦           ¦   FluentValidation.DependencyInjectionExtensions.dll
-¦   ¦           ¦   FluentValidation.dll
-¦   ¦           ¦   Humanizer.dll
-¦   ¦           ¦   Mapster.Core.dll
-¦   ¦           ¦   Mapster.dll
-¦   ¦           ¦   MediatR.Contracts.dll
-¦   ¦           ¦   MediatR.dll
-¦   ¦           ¦   Microsoft.AspNetCore.Authentication.JwtBearer.dll
-¦   ¦           ¦   Microsoft.Bcl.AsyncInterfaces.dll
-¦   ¦           ¦   Microsoft.Build.Locator.dll
-¦   ¦           ¦   Microsoft.CodeAnalysis.CSharp.dll
-¦   ¦           ¦   Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-¦   ¦           ¦   Microsoft.CodeAnalysis.dll
-¦   ¦           ¦   Microsoft.CodeAnalysis.Workspaces.dll
-¦   ¦           ¦   Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
-¦   ¦           ¦   Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
-¦   ¦           ¦   Microsoft.EntityFrameworkCore.Abstractions.dll
-¦   ¦           ¦   Microsoft.EntityFrameworkCore.Design.dll
-¦   ¦           ¦   Microsoft.EntityFrameworkCore.dll
-¦   ¦           ¦   Microsoft.EntityFrameworkCore.Relational.dll
-¦   ¦           ¦   Microsoft.Extensions.Caching.Abstractions.dll
-¦   ¦           ¦   Microsoft.Extensions.Caching.Memory.dll
-¦   ¦           ¦   Microsoft.Extensions.Configuration.Abstractions.dll
-¦   ¦           ¦   Microsoft.Extensions.DependencyInjection.Abstractions.dll
-¦   ¦           ¦   Microsoft.Extensions.DependencyInjection.dll
-¦   ¦           ¦   Microsoft.Extensions.DependencyModel.dll
-¦   ¦           ¦   Microsoft.Extensions.Logging.Abstractions.dll
-¦   ¦           ¦   Microsoft.Extensions.Logging.dll
-¦   ¦           ¦   Microsoft.Extensions.Options.dll
-¦   ¦           ¦   Microsoft.Extensions.Primitives.dll
-¦   ¦           ¦   Microsoft.IdentityModel.Abstractions.dll
-¦   ¦           ¦   Microsoft.IdentityModel.JsonWebTokens.dll
-¦   ¦           ¦   Microsoft.IdentityModel.Logging.dll
-¦   ¦           ¦   Microsoft.IdentityModel.Protocols.dll
-¦   ¦           ¦   Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-¦   ¦           ¦   Microsoft.IdentityModel.Tokens.dll
-¦   ¦           ¦   Microsoft.OpenApi.dll
-¦   ¦           ¦   Mono.TextTemplating.dll
-¦   ¦           ¦   MusicMate.Api.deps.json
-¦   ¦           ¦   MusicMate.Api.dll
-¦   ¦           ¦   MusicMate.Api.exe
-¦   ¦           ¦   MusicMate.Api.pdb
-¦   ¦           ¦   MusicMate.Api.runtimeconfig.json
-¦   ¦           ¦   MusicMate.Api.staticwebassets.endpoints.json
-¦   ¦           ¦   MusicMate.Application.dll
-¦   ¦           ¦   MusicMate.Application.pdb
-¦   ¦           ¦   MusicMate.Domain.dll
-¦   ¦           ¦   MusicMate.Domain.pdb
-¦   ¦           ¦   MusicMate.Infrastructure.dll
-¦   ¦           ¦   MusicMate.Infrastructure.pdb
-¦   ¦           ¦   Npgsql.dll
-¦   ¦           ¦   Npgsql.EntityFrameworkCore.PostgreSQL.dll
-¦   ¦           ¦   Swashbuckle.AspNetCore.Swagger.dll
-¦   ¦           ¦   Swashbuckle.AspNetCore.SwaggerGen.dll
-¦   ¦           ¦   Swashbuckle.AspNetCore.SwaggerUI.dll
-¦   ¦           ¦   System.CodeDom.dll
-¦   ¦           ¦   System.Composition.AttributedModel.dll
-¦   ¦           ¦   System.Composition.Convention.dll
-¦   ¦           ¦   System.Composition.Hosting.dll
-¦   ¦           ¦   System.Composition.Runtime.dll
-¦   ¦           ¦   System.Composition.TypedParts.dll
-¦   ¦           ¦   System.IdentityModel.Tokens.Jwt.dll
-¦   ¦           ¦   
-¦   ¦           +---cs
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---de
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---es
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---fr
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---it
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---ja
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---ko
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---pl
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---pt-BR
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---ru
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---tr
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---zh-Hans
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦           ¦       Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦           ¦       
-¦   ¦           +---zh-Hant
-¦   ¦                   Microsoft.CodeAnalysis.CSharp.resources.dll
-¦   ¦                   Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-¦   ¦                   Microsoft.CodeAnalysis.resources.dll
-¦   ¦                   Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-¦   ¦                   Microsoft.CodeAnalysis.Workspaces.resources.dll
-¦   ¦                   
-¦   +---Controllers
-¦   ¦       AuthController.cs
-¦   ¦       GenresController.cs
-¦   ¦       MatchingController.cs
-¦   ¦       
-¦   +---obj
-¦   ¦   ¦   MusicMate.Api.csproj.EntityFrameworkCore.targets
-¦   ¦   ¦   MusicMate.Api.csproj.nuget.dgspec.json
-¦   ¦   ¦   MusicMate.Api.csproj.nuget.g.props
-¦   ¦   ¦   MusicMate.Api.csproj.nuget.g.targets
-¦   ¦   ¦   project.assets.json
-¦   ¦   ¦   project.nuget.cache
-¦   ¦   ¦   project.packagespec.json
-¦   ¦   ¦   rider.project.model.nuget.info
-¦   ¦   ¦   rider.project.restore.info
-¦   ¦   ¦   
-¦   ¦   +---Debug
-¦   ¦       +---net9.0
-¦   ¦           ¦   .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-¦   ¦           ¦   apphost.exe
-¦   ¦           ¦   MusicMat.F1CE00D0.Up2Date
-¦   ¦           ¦   MusicMate.Api.AssemblyInfo.cs
-¦   ¦           ¦   MusicMate.Api.AssemblyInfoInputs.cache
-¦   ¦           ¦   MusicMate.Api.assets.cache
-¦   ¦           ¦   MusicMate.Api.csproj.AssemblyReference.cache
-¦   ¦           ¦   MusicMate.Api.csproj.CoreCompileInputs.cache
-¦   ¦           ¦   MusicMate.Api.csproj.FileListAbsolute.txt
-¦   ¦           ¦   MusicMate.Api.dll
-¦   ¦           ¦   MusicMate.Api.GeneratedMSBuildEditorConfig.editorconfig
-¦   ¦           ¦   MusicMate.Api.genruntimeconfig.cache
-¦   ¦           ¦   MusicMate.Api.GlobalUsings.g.cs
-¦   ¦           ¦   MusicMate.Api.MvcApplicationPartsAssemblyInfo.cache
-¦   ¦           ¦   MusicMate.Api.MvcApplicationPartsAssemblyInfo.cs
-¦   ¦           ¦   MusicMate.Api.pdb
-¦   ¦           ¦   MusicMate.Api.sourcelink.json
-¦   ¦           ¦   rjsmcshtml.dswa.cache.json
-¦   ¦           ¦   rjsmrazor.dswa.cache.json
-¦   ¦           ¦   rpswa.dswa.cache.json
-¦   ¦           ¦   staticwebassets.build.endpoints.json
-¦   ¦           ¦   staticwebassets.build.json
-¦   ¦           ¦   staticwebassets.build.json.cache
-¦   ¦           ¦   staticwebassets.references.upToDateCheck.txt
-¦   ¦           ¦   staticwebassets.removed.txt
-¦   ¦           ¦   
-¦   ¦           +---ref
-¦   ¦           ¦       MusicMate.Api.dll
-¦   ¦           ¦       
-¦   ¦           +---refint
-¦   ¦           ¦       MusicMate.Api.dll
-¦   ¦           ¦       
-¦   ¦           +---staticwebassets
-¦   +---Properties
-¦           launchSettings.json
-¦           
+ï¿½   ï¿½   appsettings.Development.json
+ï¿½   ï¿½   appsettings.json
+ï¿½   ï¿½   MusicMate.Api.csproj
+ï¿½   ï¿½   MusicMate.Api.csproj.user
+ï¿½   ï¿½   Program.cs
+ï¿½   ï¿½   
+ï¿½   ï¿½                   
+ï¿½   +---Controllers
+ï¿½   ï¿½       AuthController.cs
+ï¿½   ï¿½       GenresController.cs
+ï¿½   ï¿½       MatchingController.cs
+ï¿½   ï¿½       
 +---MusicMate.Application
-¦   ¦   MusicMate.Application.csproj
-¦   ¦   
-¦   +---bin
-¦   ¦   +---Debug
-¦   ¦       +---net9.0
-¦   ¦               MusicMate.Application.deps.json
-¦   ¦               MusicMate.Application.dll
-¦   ¦               MusicMate.Application.pdb
-¦   ¦               MusicMate.Domain.dll
-¦   ¦               MusicMate.Domain.pdb
-¦   ¦               
-¦   +---Common
-¦   ¦   +---Interfaces
-¦   ¦           IMusicMateDbContext.cs
-¦   ¦           
-¦   +---Contracts
-¦   ¦       IPasswordHasher.cs
-¦   ¦       
-¦   +---Features
-¦   ¦   +---Auth
-¦   ¦   ¦   +---Commands
-¦   ¦   ¦   ¦       LoginCommand.cs
-¦   ¦   ¦   ¦       LoginCommandHandler.cs
-¦   ¦   ¦   ¦       RegisterCommand.cs
-¦   ¦   ¦   ¦       RegisterCommandHandler.cs
-¦   ¦   ¦   ¦       
-¦   ¦   ¦   +---Requests
-¦   ¦   ¦           LoginRequest.cs
-¦   ¦   ¦           RegisterRequest.cs
-¦   ¦   ¦           
-¦   ¦   +---Genres
-¦   ¦   ¦   +---DTOs
-¦   ¦   ¦   ¦       GenreDto.cs
-¦   ¦   ¦   ¦       
-¦   ¦   ¦   +---Queries
-¦   ¦   ¦           GetAllGenresQuery.cs
-¦   ¦   ¦           
-¦   ¦   +---Matching
-¦   ¦   ¦   +---DTOs
-¦   ¦   ¦   ¦       MatchCandidateDto.cs
-¦   ¦   ¦   ¦       
-¦   ¦   ¦   +---Queries
-¦   ¦   ¦           GetMatchingUsersQuery.cs
-¦   ¦   ¦           
-¦   ¦   +---Users
-¦   ¦       +---Commands
-¦   ¦               SetUserGenresCommand.cs
-¦   ¦               
-¦   +---obj
-¦       ¦   MusicMate.Application.csproj.nuget.dgspec.json
-¦       ¦   MusicMate.Application.csproj.nuget.g.props
-¦       ¦   MusicMate.Application.csproj.nuget.g.targets
-¦       ¦   project.assets.json
-¦       ¦   project.nuget.cache
-¦       ¦   project.packagespec.json
-¦       ¦   rider.project.model.nuget.info
-¦       ¦   rider.project.restore.info
-¦       ¦   
-¦       +---Debug
-¦           +---net9.0
-¦               ¦   .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-¦               ¦   MusicMat.EA1865EF.Up2Date
-¦               ¦   MusicMate.Application.AssemblyInfo.cs
-¦               ¦   MusicMate.Application.AssemblyInfoInputs.cache
-¦               ¦   MusicMate.Application.assets.cache
-¦               ¦   MusicMate.Application.csproj.AssemblyReference.cache
-¦               ¦   MusicMate.Application.csproj.CoreCompileInputs.cache
-¦               ¦   MusicMate.Application.csproj.FileListAbsolute.txt
-¦               ¦   MusicMate.Application.dll
-¦               ¦   MusicMate.Application.GeneratedMSBuildEditorConfig.editorconfig
-¦               ¦   MusicMate.Application.GlobalUsings.g.cs
-¦               ¦   MusicMate.Application.pdb
-¦               ¦   MusicMate.Application.sourcelink.json
-¦               ¦   
-¦               +---ref
-¦               ¦       MusicMate.Application.dll
-¦               ¦       
-¦               +---refint
-¦                       MusicMate.Application.dll
-¦                       
+ï¿½   ï¿½   MusicMate.Application.csproj
+ï¿½   ï¿½   
+ï¿½   +---Common
+ï¿½   ï¿½   +---Interfaces
+ï¿½   ï¿½           IMusicMateDbContext.cs
+ï¿½   ï¿½           
+ï¿½   +---Contracts
+ï¿½   ï¿½       IPasswordHasher.cs
+ï¿½   ï¿½       
+ï¿½   +---Features
+ï¿½   ï¿½   +---Auth
+ï¿½   ï¿½   ï¿½   +---Commands
+ï¿½   ï¿½   ï¿½   ï¿½       LoginCommand.cs
+ï¿½   ï¿½   ï¿½   ï¿½       LoginCommandHandler.cs
+ï¿½   ï¿½   ï¿½   ï¿½       RegisterCommand.cs
+ï¿½   ï¿½   ï¿½   ï¿½       RegisterCommandHandler.cs
+ï¿½   ï¿½   ï¿½   ï¿½       
+ï¿½   ï¿½   ï¿½   +---Requests
+ï¿½   ï¿½   ï¿½           LoginRequest.cs
+ï¿½   ï¿½   ï¿½           RegisterRequest.cs
+ï¿½   ï¿½   ï¿½           
+ï¿½   ï¿½   +---Genres
+ï¿½   ï¿½   ï¿½   +---DTOs
+ï¿½   ï¿½   ï¿½   ï¿½       GenreDto.cs
+ï¿½   ï¿½   ï¿½   ï¿½       
+ï¿½   ï¿½   ï¿½   +---Queries
+ï¿½   ï¿½   ï¿½           GetAllGenresQuery.cs
+ï¿½   ï¿½   ï¿½           
+ï¿½   ï¿½   +---Matching
+ï¿½   ï¿½   ï¿½   +---DTOs
+ï¿½   ï¿½   ï¿½   ï¿½       MatchCandidateDto.cs
+ï¿½   ï¿½   ï¿½   ï¿½       
+ï¿½   ï¿½   ï¿½   +---Queries
+ï¿½   ï¿½   ï¿½           GetMatchingUsersQuery.cs
+ï¿½   ï¿½   ï¿½           
+ï¿½   ï¿½   +---Users
+ï¿½   ï¿½       +---Commands
+ï¿½   ï¿½               SetUserGenresCommand.cs
+ï¿½   ï¿½               
+ï¿½                       
 +---MusicMate.Domain
-¦   ¦   MusicMate.Domain.csproj
-¦   ¦   
-¦   +---bin
-¦   ¦   +---Debug
-¦   ¦       +---net9.0
-¦   ¦               MusicMate.Domain.deps.json
-¦   ¦               MusicMate.Domain.dll
-¦   ¦               MusicMate.Domain.pdb
-¦   ¦               
-¦   +---Entities
-¦   ¦       Matching.cs
-¦   ¦       MusicGenre.cs
-¦   ¦       User.cs
-¦   ¦       UserFavoriteGenre.cs
-¦   ¦       
-¦   +---obj
-¦       ¦   MusicMate.Domain.csproj.nuget.dgspec.json
-¦       ¦   MusicMate.Domain.csproj.nuget.g.props
-¦       ¦   MusicMate.Domain.csproj.nuget.g.targets
-¦       ¦   project.assets.json
-¦       ¦   project.nuget.cache
-¦       ¦   project.packagespec.json
-¦       ¦   rider.project.model.nuget.info
-¦       ¦   rider.project.restore.info
-¦       ¦   
-¦       +---Debug
-¦           +---net9.0
-¦               ¦   .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-¦               ¦   MusicMate.Domain.AssemblyInfo.cs
-¦               ¦   MusicMate.Domain.AssemblyInfoInputs.cache
-¦               ¦   MusicMate.Domain.assets.cache
-¦               ¦   MusicMate.Domain.csproj.CoreCompileInputs.cache
-¦               ¦   MusicMate.Domain.csproj.FileListAbsolute.txt
-¦               ¦   MusicMate.Domain.dll
-¦               ¦   MusicMate.Domain.GeneratedMSBuildEditorConfig.editorconfig
-¦               ¦   MusicMate.Domain.GlobalUsings.g.cs
-¦               ¦   MusicMate.Domain.pdb
-¦               ¦   MusicMate.Domain.sourcelink.json
-¦               ¦   
-¦               +---ref
-¦               ¦       MusicMate.Domain.dll
-¦               ¦       
-¦               +---refint
-¦                       MusicMate.Domain.dll
-¦                       
+ï¿½   ï¿½   MusicMate.Domain.csproj
+ï¿½   ï¿½   
+ï¿½   ï¿½               
+ï¿½   +---Entities
+ï¿½   ï¿½       Matching.cs
+ï¿½   ï¿½       MusicGenre.cs
+ï¿½   ï¿½       User.cs
+ï¿½   ï¿½       UserFavoriteGenre.cs
+ï¿½   ï¿½       
+ï¿½                       
 +---MusicMate.Infrastructure
-¦   ¦   MusicMate.Infrastructure.csproj
-¦   ¦   
-¦   +---bin
-¦   ¦   +---Debug
-¦   ¦       +---net9.0
-¦   ¦               MusicMate.Application.dll
-¦   ¦               MusicMate.Application.pdb
-¦   ¦               MusicMate.Domain.dll
-¦   ¦               MusicMate.Domain.pdb
-¦   ¦               MusicMate.Infrastructure.deps.json
-¦   ¦               MusicMate.Infrastructure.dll
-¦   ¦               MusicMate.Infrastructure.pdb
-¦   ¦               
-¦   +---DependencyInjection
-¦   ¦       AddInfrastructure.cs
-¦   ¦       
-¦   +---Migrations
-¦   ¦       20251117064612_InitialCreate.cs
-¦   ¦       20251117064612_InitialCreate.Designer.cs
-¦   ¦       20251127153020_UpdateUserSchema.cs
-¦   ¦       20251127153020_UpdateUserSchema.Designer.cs
-¦   ¦       20251201080630_SeedGenres.cs
-¦   ¦       20251201080630_SeedGenres.Designer.cs
-¦   ¦       20251207051510_UpdateUserTable.cs
-¦   ¦       20251207051510_UpdateUserTable.Designer.cs
-¦   ¦       MusicMateDbContextModelSnapshot.cs
-¦   ¦       
-¦   +---obj
-¦   ¦   ¦   MusicMate.Infrastructure.csproj.EntityFrameworkCore.targets
-¦   ¦   ¦   MusicMate.Infrastructure.csproj.nuget.dgspec.json
-¦   ¦   ¦   MusicMate.Infrastructure.csproj.nuget.g.props
-¦   ¦   ¦   MusicMate.Infrastructure.csproj.nuget.g.targets
-¦   ¦   ¦   project.assets.json
-¦   ¦   ¦   project.nuget.cache
-¦   ¦   ¦   project.packagespec.json
-¦   ¦   ¦   rider.project.model.nuget.info
-¦   ¦   ¦   rider.project.restore.info
-¦   ¦   ¦   
-¦   ¦   +---Debug
-¦   ¦       +---net9.0
-¦   ¦           ¦   .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-¦   ¦           ¦   MusicMat.96E84EF0.Up2Date
-¦   ¦           ¦   MusicMate.Infrastructure.AssemblyInfo.cs
-¦   ¦           ¦   MusicMate.Infrastructure.AssemblyInfoInputs.cache
-¦   ¦           ¦   MusicMate.Infrastructure.assets.cache
-¦   ¦           ¦   MusicMate.Infrastructure.csproj.AssemblyReference.cache
-¦   ¦           ¦   MusicMate.Infrastructure.csproj.CoreCompileInputs.cache
-¦   ¦           ¦   MusicMate.Infrastructure.csproj.FileListAbsolute.txt
-¦   ¦           ¦   MusicMate.Infrastructure.dll
-¦   ¦           ¦   MusicMate.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-¦   ¦           ¦   MusicMate.Infrastructure.GlobalUsings.g.cs
-¦   ¦           ¦   MusicMate.Infrastructure.pdb
-¦   ¦           ¦   MusicMate.Infrastructure.sourcelink.json
-¦   ¦           ¦   
-¦   ¦           +---ref
-¦   ¦           ¦       MusicMate.Infrastructure.dll
-¦   ¦           ¦       
-¦   ¦           +---refint
-¦   ¦                   MusicMate.Infrastructure.dll
-¦   ¦                   
-¦   +---Persistence
-¦   ¦       MusicMateDbContext.cs
-¦   ¦       
-¦   +---Services
-¦           BCryptPasswordHasher.cs
-¦           
+ï¿½   ï¿½   MusicMate.Infrastructure.csproj
+ï¿½   ï¿½   
+ï¿½   ï¿½                   
+ï¿½   +---Persistence
+ï¿½   ï¿½       MusicMateDbContext.cs
+ï¿½   ï¿½       
+ï¿½   +---Services
+ï¿½           BCryptPasswordHasher.cs
+ï¿½           
 +---MusicMate.Shared
-    ¦   MusicMate.Shared.csproj
-    ¦   
-    +---bin
-    ¦   +---Debug
-    ¦       +---net9.0
-    ¦               MusicMate.Domain.dll
-    ¦               MusicMate.Domain.pdb
-    ¦               MusicMate.Shared.deps.json
-    ¦               MusicMate.Shared.dll
-    ¦               MusicMate.Shared.pdb
-    ¦               
-    +---obj
-        ¦   MusicMate.Shared.csproj.nuget.dgspec.json
-        ¦   MusicMate.Shared.csproj.nuget.g.props
-        ¦   MusicMate.Shared.csproj.nuget.g.targets
-        ¦   project.assets.json
-        ¦   project.nuget.cache
-        ¦   project.packagespec.json
-        ¦   rider.project.model.nuget.info
-        ¦   rider.project.restore.info
-        ¦   
-        +---Debug
-            +---net9.0
-                ¦   .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-                ¦   MusicMat.967C683C.Up2Date
-                ¦   MusicMate.Shared.AssemblyInfo.cs
-                ¦   MusicMate.Shared.AssemblyInfoInputs.cache
-                ¦   MusicMate.Shared.assets.cache
-                ¦   MusicMate.Shared.csproj.AssemblyReference.cache
-                ¦   MusicMate.Shared.csproj.CoreCompileInputs.cache
-                ¦   MusicMate.Shared.csproj.FileListAbsolute.txt
-                ¦   MusicMate.Shared.dll
-                ¦   MusicMate.Shared.GeneratedMSBuildEditorConfig.editorconfig
-                ¦   MusicMate.Shared.GlobalUsings.g.cs
-                ¦   MusicMate.Shared.pdb
-                ¦   
-                +---ref
-                ¦       MusicMate.Shared.dll
-                ¦       
-                +---refint
-                        MusicMate.Shared.dll
-                        
+    ï¿½   MusicMate.Shared.csproj
+    ï¿½   
