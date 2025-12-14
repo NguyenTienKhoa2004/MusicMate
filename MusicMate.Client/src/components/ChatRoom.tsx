@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// Import đúng tên ChatSection
 import { ChatSection } from '../hooks/ChatSection';
 
 export const ChatRoom = () => {
@@ -21,7 +20,7 @@ export const ChatRoom = () => {
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    receiverId: '07411746-ae50-46dd-b244-886f7ea10647', // ID người nhận (sửa cho phù hợp logic của bạn)
+                    receiverId: '07411746-ae50-46dd-b244-886f7ea10647', 
                     content: input
                 })
             });
@@ -38,7 +37,6 @@ export const ChatRoom = () => {
             <div style={{ border: '1px solid #ccc', height: '300px', overflowY: 'auto', padding: '10px' }}>
                 {messages.map((msg, index) => (
                     <div key={index} style={{ marginBottom: '10px' }}>
-                        {/* Hiển thị đúng trường từ Backend */}
                         <strong>{msg.sender_name}:</strong> {msg.content}
                     </div>
                 ))}

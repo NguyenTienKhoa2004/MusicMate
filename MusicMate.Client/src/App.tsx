@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { ChatRoom } from './components/ChatRoom'
-import { Login } from './components/Login';
+import  Login  from './components/Login';
 
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
