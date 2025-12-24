@@ -42,6 +42,7 @@ public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, Mes
         };
 
         await _chatNotifier.SendMessageToUserAsync(message.receiver_id.ToString(), messageDto);
+        await _chatNotifier.SendMessageToUserAsync(message.sender_id.ToString(), messageDto);
 
         return messageDto;
     }

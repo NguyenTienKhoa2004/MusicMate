@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChatSection } from '../hooks/ChatSection';
 
-export const ChatRoom = () => {
+export const ChatRoom = () => { 
     const roomId = "room-1";
 
     const { messages } = ChatSection(roomId);
@@ -34,7 +34,7 @@ export const ChatRoom = () => {
         <div style={{ padding: '20px' }}>
             <h2>Phòng Chat: {roomId}</h2>
 
-            <div style={{ border: '1px solid #ccc', height: '300px', overflowY: 'auto', padding: '10px' }}>
+            <div style={{ border: '1px solid #ccc', height: '400px', overflowY: 'auto', padding: '10px' }}>
                 {messages.map((msg, index) => (
                     <div key={index} style={{ marginBottom: '10px' }}>
                         <strong>{msg.sender_name}:</strong> {msg.content}

@@ -10,7 +10,7 @@ namespace MusicMate.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 
-public class ChatController(IMediator _mediator) : ControllerBase
+public class ChatController(IMediator mediator) : ControllerBase
 {
     
     [HttpPost]
@@ -27,7 +27,7 @@ public class ChatController(IMediator _mediator) : ControllerBase
         Guid sender_id = Guid.Parse(user_id);
         var command = new SendMessageCommand(request, sender_id);
 
-        var result = await _mediator.Send(command);
+        var result = await mediator.Send(command);
         
         return Ok(result);
     }

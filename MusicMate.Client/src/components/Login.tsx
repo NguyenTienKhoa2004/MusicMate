@@ -27,17 +27,23 @@ export default function Login() {
             });
 
             const data = await response.json();
+            console.log("Dữ liệu Server trả về:", data);
 
             if (!response.ok) {
                 throw new Error(data.message || "Retry");
             }
 
             localStorage.setItem("accessToken", data.token);
+            localStorage.setItem("currentUser", JSON.stringify({
+                name: data.username, 
+                email: data.email,
+                id: data.id,
+            }));
 
             console.log("Token đã lưu:", data.token);
 
-            navigate("/chat");
-            console.log("Redirect to /chat");
+            navigate("/");
+            console.log("Redirect to /");
 
         } catch (err: any) {
             setError(err.message);

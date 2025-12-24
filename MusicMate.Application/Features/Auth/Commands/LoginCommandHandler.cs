@@ -7,14 +7,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration; 
 using System.Security.Claims;
 using System.Text;
+using MusicMate.Application.Features.Auth.DTOs; 
 using BCrypt.Net;
 
 
 namespace MusicMate.Application.Features.Auth.Commands;
 
-public class LoginCommandHandler(IMusicMateDbContext _db, IConfiguration _config) : IRequestHandler<LoginCommand, string>
+public class LoginCommandHandler(IMusicMateDbContext _db, IConfiguration _config) : IRequestHandler<LoginCommand, AuthDto>
 {
-    public async Task<string> Handle(LoginCommand command, CancellationToken cancellationToken)
+    public async Task<AuthDto> Handle(LoginCommand command, CancellationToken cancellationToken)
     {
         var request = command.LoginRequest;
         
@@ -32,7 +33,13 @@ public class LoginCommandHandler(IMusicMateDbContext _db, IConfiguration _config
         }
         string token = GenerateJwtToken(user);
 
-        return token;
+        return new AuthDto
+        {
+            Token = token,
+            Username = user.username, 
+            Email = user.email,
+            Id = user.id
+        };
     }
     
     private bool VerifyPassword(string inputPassword, string storedHash)

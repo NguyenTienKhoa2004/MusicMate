@@ -30,8 +30,8 @@ public class AuthController(IMediator mediator) : ControllerBase
         var command = new LoginCommand(request);
         try
         {
-            var token = await mediator.Send(command);
-            return Ok(new { Token = token });
+            var result = await mediator.Send(command); 
+            return Ok(result);
         }
         catch (Exception ex)
         {
