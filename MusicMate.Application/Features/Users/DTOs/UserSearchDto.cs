@@ -7,7 +7,7 @@ namespace MusicMate.Application.Features.Users.DTOs
         public Guid UserId { get; set; } 
         public string Username { get; set; } = string.Empty;
         public string? DisplayName { get; set; } 
-        public bool IsOnline { get; set; } 
-        public string? City { get; set; } 
+        public string? UserAvatar { get; set; } // <--- THÊM DÒNG NÀY
+        public bool IsOnline { get; set; }
     }
 }

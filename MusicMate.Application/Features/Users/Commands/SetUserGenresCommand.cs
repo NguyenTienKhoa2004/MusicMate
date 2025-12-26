@@ -7,17 +7,17 @@ namespace MusicMate.Application.Features.Users.Commands;
 
 public record SetUserGenresCommand(Guid UserId, List<int> GenreIds) : IRequest<bool>;
 
-public class SetUserGenresCommandHandler(IMusicMateDbContext _db) : IRequestHandler<SetUserGenresCommand, bool>
+public class SetUserGenresCommandHandler(IMusicMateDbContext db) : IRequestHandler<SetUserGenresCommand, bool>
 {
     public async Task<bool> Handle(SetUserGenresCommand request, CancellationToken ct)
     {
-        var oldGenres = await _db.UserFavoriteGenres
+        var oldGenres = await db.UserFavoriteGenres
             .Where(x => x.user_id == request.UserId)
             .ToListAsync(ct);
         
         if (oldGenres.Any())
         {
-            _db.UserFavoriteGenres.RemoveRange(oldGenres);
+            db.UserFavoriteGenres.RemoveRange(oldGenres);
         }
         
         var newGenres = request.GenreIds.Select(genreId => new UserFavoriteGenre
@@ -26,9 +26,9 @@ public class SetUserGenresCommandHandler(IMusicMateDbContext _db) : IRequestHand
             genre_id = genreId
         });
 
-        await _db.UserFavoriteGenres.AddRangeAsync(newGenres, ct);
+        await db.UserFavoriteGenres.AddRangeAsync(newGenres, ct);
         
-        await _db.SaveChangesAsync(ct);
+        await db.SaveChangesAsync(ct);
 
         return true;
     }

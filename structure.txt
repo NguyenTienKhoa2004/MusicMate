@@ -1,96 +1,80 @@
 Folder PATH listing for volume OS
 Volume serial number is F418-1723
 C:.
-ï¿½   .gitignore
-ï¿½   MusicMate.sln
-ï¿½   MusicMate.sln.DotSettings.user
-ï¿½   structure.txt
-ï¿½   
-+---.idea
-ï¿½   +---.idea.MusicMate
-ï¿½       +---.idea
-ï¿½               .gitignore
-ï¿½               indexLayout.xml
-ï¿½               material_theme_project_new.xml
-ï¿½               projectSettingsUpdater.xml
-ï¿½               vcs.xml
-ï¿½               workspace.xml
-ï¿½               
+¦
+¦               
 +---MusicMate.Api
-ï¿½   ï¿½   appsettings.Development.json
-ï¿½   ï¿½   appsettings.json
-ï¿½   ï¿½   MusicMate.Api.csproj
-ï¿½   ï¿½   MusicMate.Api.csproj.user
-ï¿½   ï¿½   Program.cs
-ï¿½   ï¿½   
-ï¿½   ï¿½                   
-ï¿½   +---Controllers
-ï¿½   ï¿½       AuthController.cs
-ï¿½   ï¿½       GenresController.cs
-ï¿½   ï¿½       MatchingController.cs
-ï¿½   ï¿½       
+¦   ¦   appsettings.Development.json
+¦   ¦   appsettings.json
+¦   ¦   MusicMate.Api.csproj
+¦   ¦   MusicMate.Api.csproj.user
+¦   ¦   Program.cs
+¦   ¦                 
+¦   +---Controllers
+¦   ¦       AuthController.cs
+¦   ¦       GenresController.cs
+¦   ¦       MatchingController.cs
+¦   ¦       
+¦   ¦           
 +---MusicMate.Application
-ï¿½   ï¿½   MusicMate.Application.csproj
-ï¿½   ï¿½   
-ï¿½   +---Common
-ï¿½   ï¿½   +---Interfaces
-ï¿½   ï¿½           IMusicMateDbContext.cs
-ï¿½   ï¿½           
-ï¿½   +---Contracts
-ï¿½   ï¿½       IPasswordHasher.cs
-ï¿½   ï¿½       
-ï¿½   +---Features
-ï¿½   ï¿½   +---Auth
-ï¿½   ï¿½   ï¿½   +---Commands
-ï¿½   ï¿½   ï¿½   ï¿½       LoginCommand.cs
-ï¿½   ï¿½   ï¿½   ï¿½       LoginCommandHandler.cs
-ï¿½   ï¿½   ï¿½   ï¿½       RegisterCommand.cs
-ï¿½   ï¿½   ï¿½   ï¿½       RegisterCommandHandler.cs
-ï¿½   ï¿½   ï¿½   ï¿½       
-ï¿½   ï¿½   ï¿½   +---Requests
-ï¿½   ï¿½   ï¿½           LoginRequest.cs
-ï¿½   ï¿½   ï¿½           RegisterRequest.cs
-ï¿½   ï¿½   ï¿½           
-ï¿½   ï¿½   +---Genres
-ï¿½   ï¿½   ï¿½   +---DTOs
-ï¿½   ï¿½   ï¿½   ï¿½       GenreDto.cs
-ï¿½   ï¿½   ï¿½   ï¿½       
-ï¿½   ï¿½   ï¿½   +---Queries
-ï¿½   ï¿½   ï¿½           GetAllGenresQuery.cs
-ï¿½   ï¿½   ï¿½           
-ï¿½   ï¿½   +---Matching
-ï¿½   ï¿½   ï¿½   +---DTOs
-ï¿½   ï¿½   ï¿½   ï¿½       MatchCandidateDto.cs
-ï¿½   ï¿½   ï¿½   ï¿½       
-ï¿½   ï¿½   ï¿½   +---Queries
-ï¿½   ï¿½   ï¿½           GetMatchingUsersQuery.cs
-ï¿½   ï¿½   ï¿½           
-ï¿½   ï¿½   +---Users
-ï¿½   ï¿½       +---Commands
-ï¿½   ï¿½               SetUserGenresCommand.cs
-ï¿½   ï¿½               
-ï¿½                       
+¦   ¦   MusicMate.Application.csproj
+¦   ¦   
+¦   +---Common
+¦   ¦   +---Interfaces
+¦   ¦           IMusicMateDbContext.cs
+¦   ¦           
+¦   +---Contracts
+¦   ¦       IPasswordHasher.cs
+¦   ¦       
+¦   +---Features
+¦   ¦   +---Auth
+¦   ¦   ¦   +---Commands
+¦   ¦   ¦   ¦       LoginCommand.cs
+¦   ¦   ¦   ¦       LoginCommandHandler.cs
+¦   ¦   ¦   ¦       RegisterCommand.cs
+¦   ¦   ¦   ¦       RegisterCommandHandler.cs
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---Requests
+¦   ¦   ¦           LoginRequest.cs
+¦   ¦   ¦           RegisterRequest.cs
+¦   ¦   ¦           
+¦   ¦   +---Genres
+¦   ¦   ¦   +---DTOs
+¦   ¦   ¦   ¦       GenreDto.cs
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---Queries
+¦   ¦   ¦           GetAllGenresQuery.cs
+¦   ¦   ¦           
+¦   ¦   +---Matching
+¦   ¦   ¦   +---DTOs
+¦   ¦   ¦   ¦       MatchCandidateDto.cs
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---Queries
+¦   ¦   ¦           GetMatchingUsersQuery.cs
+¦   ¦   ¦           
+¦   ¦   +---Users
+¦   ¦       +---Commands
+¦   ¦               SetUserGenresCommand.cs¦                       
 +---MusicMate.Domain
-ï¿½   ï¿½   MusicMate.Domain.csproj
-ï¿½   ï¿½   
-ï¿½   ï¿½               
-ï¿½   +---Entities
-ï¿½   ï¿½       Matching.cs
-ï¿½   ï¿½       MusicGenre.cs
-ï¿½   ï¿½       User.cs
-ï¿½   ï¿½       UserFavoriteGenre.cs
-ï¿½   ï¿½       
-ï¿½                       
+¦   ¦   MusicMate.Domain.csproj
+¦   ¦   
+¦   ¦               
+¦   +---Entities
+¦   ¦       Matching.cs
+¦   ¦       MusicGenre.cs
+¦   ¦       User.cs
+¦   ¦       UserFavoriteGenre.cs
+¦   ¦                              
 +---MusicMate.Infrastructure
-ï¿½   ï¿½   MusicMate.Infrastructure.csproj
-ï¿½   ï¿½   
-ï¿½   ï¿½                   
-ï¿½   +---Persistence
-ï¿½   ï¿½       MusicMateDbContext.cs
-ï¿½   ï¿½       
-ï¿½   +---Services
-ï¿½           BCryptPasswordHasher.cs
-ï¿½           
+¦   ¦   MusicMate.Infrastructure.csproj
+¦   ¦   
+¦   +---Persistence
+¦   ¦       MusicMateDbContext.cs
+¦   ¦       
+¦   +---Services
+¦           BCryptPasswordHasher.cs
+¦           
 +---MusicMate.Shared
-    ï¿½   MusicMate.Shared.csproj
-    ï¿½   
+    ¦   MusicMate.Shared.csproj
+    ¦   
+  

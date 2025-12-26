@@ -24,6 +24,9 @@ namespace MusicMate.Application.Features.Users.Queries
                 {
                     UserId = u.id,
                     Username = u.username,
+                    DisplayName = u.display_name, // <--- Map thêm cái này
+                    UserAvatar = u.user_avatar,   // <--- Map thêm cái này
+                    IsOnline = u.IsOnline
                 })
                 .ToListAsync(cancellationToken);
 
