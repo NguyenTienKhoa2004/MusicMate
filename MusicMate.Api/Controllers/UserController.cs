@@ -1,8 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MusicMate.Application.Features.Users.Queries;
-using System;
-using System.Threading.Tasks;
 
 namespace MusicMate.Api.Controllers
 {
@@ -10,6 +8,16 @@ namespace MusicMate.Api.Controllers
     [Route("api/[controller]")]
     public class UsersController(IMediator mediator) : ControllerBase
     {
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers([FromQuery] Guid currentUserId, [FromQuery] int limit = 20)
+
+        {
+            var query = new GetAllUsersQuery(limit, currentUserId);
+    
+            var results = await mediator.Send(query);
+    
+            return Ok(results);
+        }
         [HttpGet("search")]
         public async Task<IActionResult> SearchUsers([FromQuery] string searchTerm, [FromQuery] Guid currentUserId, [FromQuery] int limit = 20)
         {

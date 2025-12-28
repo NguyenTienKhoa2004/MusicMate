@@ -1,5 +1,3 @@
-// src/types/index.ts
-
 export interface CurrentUser {
     id: string;
     name: string;
@@ -19,12 +17,12 @@ export interface Song {
     title: string;
     artist: string;
     plays: string;
-    image: string; // Trong ví dụ của bạn là string (emoji), thực tế có thể là URL
+    image: string; 
 }
 
 export interface RecentUser {
     id: number;
     name: string;
-    status: "online" | "offline"; // Chỉ cho phép 2 giá trị này
+    status: "online" | "offline";
     avatar: string;
 }

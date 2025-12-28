@@ -2,10 +2,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MusicMate.Application.Common.Interfaces;
 using MusicMate.Application.Features.Users.DTOs;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MusicMate.Application.Features.Users.Queries
 {
@@ -24,8 +20,8 @@ namespace MusicMate.Application.Features.Users.Queries
                 {
                     UserId = u.id,
                     Username = u.username,
-                    DisplayName = u.display_name, // <--- Map thêm cái này
-                    UserAvatar = u.user_avatar,   // <--- Map thêm cái này
+                    DisplayName = u.display_name, 
+                    UserAvatar = u.user_avatar,   
                     IsOnline = u.IsOnline
                 })
                 .ToListAsync(cancellationToken);

@@ -5,16 +5,8 @@ using MusicMate.Application.Features.Chat.DTOs;
 
 namespace MusicMate.Application.Features.Chat.Commands;
 
-public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, MessageDto>
+public class SendMessageCommandHandler(IMusicMateDbContext context, IChatNotifier chatNotifier) : IRequestHandler<SendMessageCommand, MessageDto>
 {
-    private readonly IMusicMateDbContext _context;
-    private readonly IChatNotifier _chatNotifier;
-
-    public SendMessageCommandHandler(IMusicMateDbContext context, IChatNotifier chatNotifier)
-    {
-        _context = context;
-        _chatNotifier = chatNotifier;
-    }
     public async Task<MessageDto> Handle(SendMessageCommand command, CancellationToken cancellationToken)
     {
         var message = new Message
@@ -25,10 +17,10 @@ public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, Mes
             create_time = DateTime.UtcNow
         };
 
-        _context.Messages.Add(message);
-        await _context.SaveChangesAsync(cancellationToken);
+        context.Messages.Add(message);
+        await context.SaveChangesAsync(cancellationToken);
         
-        var sender = await _context.Users.FindAsync(new object[] { command.sender_id }, cancellationToken);
+        var sender = await context.Users.FindAsync(new object[] { command.sender_id }, cancellationToken);
 
         var messageDto = new MessageDto
         {
@@ -41,8 +33,8 @@ public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, Mes
             sender_avatar = sender?.user_avatar
         };
 
-        await _chatNotifier.SendMessageToUserAsync(message.receiver_id.ToString(), messageDto);
-        await _chatNotifier.SendMessageToUserAsync(message.sender_id.ToString(), messageDto);
+        await chatNotifier.SendMessageToUserAsync(message.receiver_id.ToString(), messageDto);
+        await chatNotifier.SendMessageToUserAsync(message.sender_id.ToString(), messageDto);
 
         return messageDto;
     }
