@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Music, Search, Home, Users, Heart, Settings, User, LogOut, TrendingUp, LogIn, Loader2 } from 'lucide-react';
+import { Music, Search, Home, Users, Heart, Settings, User, LogOut, TrendingUp, LogIn, Loader2, MessageCircle } from 'lucide-react';
 import { SongCard } from './SongCard'; 
 import { UserCard } from './UserCard';
 import { CurrentUser, SearchResultUser, Song, RecentUser } from '../types'; // Import types
@@ -54,7 +54,6 @@ export function HomePage() {
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            // Kiểm tra type an toàn cho node
             if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
                 setShowDropdown(false);
             }
@@ -83,7 +82,6 @@ export function HomePage() {
                 );
 
                 if (response.ok) {
-                    // Ép kiểu dữ liệu trả về từ API
                     const data = await response.json() as SearchResultUser[];
                     setSearchResults(data);
                 }
@@ -128,15 +126,21 @@ export function HomePage() {
 
                 <nav className="flex-1 space-y-2 overflow-y-auto">
                     {[
-                        { id: 'home', icon: Home, label: 'Trang chủ' },
-                        { id: 'discover', icon: TrendingUp, label: 'Khám phá' },
-                        { id: 'friends', icon: Users, label: 'Bạn bè' },
-                        { id: 'favorites', icon: Heart, label: 'Yêu thích' },
-                        { id: 'settings', icon: Settings, label: 'Cài đặt' },
+                        { id: 'home', icon: Home, label: 'Trang chủ', path: '/' },
+                        { id: 'discover', icon: TrendingUp, label: 'Khám phá', path: '/discover' },
+                        { id: 'friends', icon: Users, label: 'Bạn bè', path: '/friends' },
+                        { id: 'messages', icon: MessageCircle, label: 'Tin nhắn', path: '/chat' }, // Định nghĩa đường dẫn ở đây
+                        { id: 'favorites', icon: Heart, label: 'Yêu thích', path: '/favorites' },
+                        { id: 'settings', icon: Settings, label: 'Cài đặt', path: '/settings' },
                     ].map((item) => (
                         <button
                             key={item.id}
-                            onClick={() => setActiveNav(item.id)}
+                            onClick={() => {
+                                setActiveNav(item.id);
+                                if (item.path) {
+                                    navigate(item.path); 
+                                }
+                            }}
                             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${activeNav === item.id ? "bg-green-500/20 text-green-400" : "text-gray-400 hover:bg-gray-800/50 hover:text-white"}`}
                         >
                             <item.icon className="w-5 h-5" /> <span className="font-medium">{item.label}</span>
