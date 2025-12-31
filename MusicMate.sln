@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Shared", "MusicMate.Shared\MusicMate.Shared.csproj", "{508C4FC3-5453-4253-8AF7-FE01D2285FF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Api", "backend\MusicMate.Api\MusicMate.Api.csproj", "{C9689308-EBDA-450E-88E3-27B17F78B367}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Application", "backend\MusicMate.Application\MusicMate.Application.csproj", "{BA761D31-F02C-497B-A23E-04E9B1D06AE3}"
@@ -13,20 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Domain", "backend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMate.Infrastructure", "backend\MusicMate.Infrastructure\MusicMate.Infrastructure.csproj", "{AC6AB837-6EC7-4A9D-A6B1-E900353FA964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary2", "ClassLibrary2\ClassLibrary2.csproj", "{DD3A67AD-3D1E-4776-B7BC-405BF31BFAC2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{8F39C4D9-1A31-402D-A494-566F60375213}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{508C4FC3-5453-4253-8AF7-FE01D2285FF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C9689308-EBDA-450E-88E3-27B17F78B367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C9689308-EBDA-450E-88E3-27B17F78B367}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9689308-EBDA-450E-88E3-27B17F78B367}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,14 +33,6 @@ Global
 		{AC6AB837-6EC7-4A9D-A6B1-E900353FA964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6AB837-6EC7-4A9D-A6B1-E900353FA964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6AB837-6EC7-4A9D-A6B1-E900353FA964}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD3A67AD-3D1E-4776-B7BC-405BF31BFAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD3A67AD-3D1E-4776-B7BC-405BF31BFAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD3A67AD-3D1E-4776-B7BC-405BF31BFAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD3A67AD-3D1E-4776-B7BC-405BF31BFAC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F39C4D9-1A31-402D-A494-566F60375213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F39C4D9-1A31-402D-A494-566F60375213}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F39C4D9-1A31-402D-A494-566F60375213}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F39C4D9-1A31-402D-A494-566F60375213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

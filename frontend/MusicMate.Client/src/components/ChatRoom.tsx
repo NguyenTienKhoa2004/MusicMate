@@ -18,7 +18,6 @@ interface SearchUserResult {
 }
 
 export function ChatRoom() {
-    // ... (Giữ nguyên phần logic state và effect của bạn ở trên) ...
     const [input, setInput] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState<SearchUserResult[]>([]);
