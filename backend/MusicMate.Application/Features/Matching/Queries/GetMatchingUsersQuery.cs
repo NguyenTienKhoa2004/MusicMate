@@ -18,41 +18,41 @@ public class GetMatchingUsersQueryHandler(IMusicMateDbContext _db) : IRequestHan
 
         if (!myGenreIds.Any()) return new List<MatchCandidateDto>(); 
         
-        var matched_users = await _db.Users
-            .Include(u => u.favorite_genres)
-            .ThenInclude(fg => fg.genre)
-            .Where(u => u.id != request.CurrentUserId) 
-            .Where(u => u.favorite_genres.Any(fg => myGenreIds.Contains(fg.genre_id))) 
-            .Select(u => new 
+        var matched_users_data = await _db.Users
+            .Where(u => u.id != request.CurrentUserId)
+            .Select(u => new
             {
                 User = u,
-                GenreNames = u.favorite_genres.Select(fg => new { GenreId = fg.genre_id, Name = fg.genre.name }).ToList() 
+                CommonGenreCount = u.favorite_genres.Count(fg => myGenreIds.Contains(fg.genre_id)),
+                GenreNames = u.favorite_genres.Select(fg => new { GenreId = fg.genre_id, Name = fg.genre.name }).ToList()
             })
-            .Take(50) 
+            .Where(x => x.CommonGenreCount > 0)
+            .OrderByDescending(x => x.CommonGenreCount)
+            .Take(50)
+            .AsSplitQuery()
             .ToListAsync(ct);
-        
-        var result = new List<MatchCandidateDto>();
 
-        foreach (var each_user in matched_users)
+        var result = matched_users_data.Select(u =>
         {
-            var theirGenreIds = each_user.GenreNames.Select(g => g.GenreId).ToList();
+            var theirGenreIds = u.GenreNames.Select(g => g.GenreId).ToList();
             var sameGenres = myGenreIds.Intersect(theirGenreIds).ToList();
             
             double score = (double)sameGenres.Count / myGenreIds.Count * 100;
             
-            var commonGenreNames = each_user.GenreNames
+            var commonGenreNames = u.GenreNames
                 .Where(g => sameGenres.Contains(g.GenreId))
                 .Select(g => g.Name)
                 .ToList();
 
-            result.Add(new MatchCandidateDto
+            return new MatchCandidateDto
             {
-                UserId = each_user.User.id,
-                DisplayName = each_user.User.display_name,
-                MatchPercentage = (int)score,
+                UserId = u.User.id,
+                DisplayName = u.User.display_name,
+                MatchPercentage = (int)Math.Round(score),
                 CommonGenres = commonGenreNames
-            });
-        }
+            };
+        }).ToList();
+
         return result.OrderByDescending(x => x.MatchPercentage).ToList();
     }
 }

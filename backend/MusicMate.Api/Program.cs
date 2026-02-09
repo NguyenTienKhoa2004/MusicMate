@@ -54,7 +54,6 @@ builder.Services.AddAuthentication(options =>
                 if (!string.IsNullOrEmpty(accessToken) &&
                     path.StartsWithSegments("/hub/chat"))
                 {
-                    // Gán token vào context để xác thực
                     context.Token = accessToken;
                 }
                 return Task.CompletedTask;
@@ -66,10 +65,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") // Domain React
+            policy.WithOrigins("http://localhost:5173") 
                 .AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials(); // <--- BẮT BUỘC PHẢI CÓ DÒNG NÀY CHO SIGNALR
+                .AllowCredentials(); 
         });
 });
 builder.Services.AddControllers();

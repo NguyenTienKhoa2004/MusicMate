@@ -1,21 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Music, Send, Search, MoreVertical, MessageSquare, ArrowLeft, Users } from 'lucide-react';
-import { useChatSignalR, MessageDto } from '../hooks/useChatSignalR';
-
-interface CurrentUser {
-    id: string;
-    name: string;
-    email: string;
-}
-
-interface SearchUserResult {
-    id: string;
-    userId: string;
-    displayName: string;
-    username: string;
-    userAvatar?: string;
-    isOnline?: boolean;
-}
+import { useChatSignalR } from '../hooks/useChatSignalR';
+import { type MessageDto, type CurrentUser, type SearchUserResult } from '../types/chat';
 
 export function ChatRoom() {
     const [input, setInput] = useState("");
@@ -25,6 +11,8 @@ export function ChatRoom() {
     const [selectedFriend, setSelectedFriend] = useState<any>(null);
     const [currentUser, setCurrentUser] = useState<CurrentUser>({ id: "", name: "Khách", email: "" });
     const [suggestedUsers, setSuggestedUsers] = useState<SearchUserResult[]>([]);
+
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const userStr = localStorage.getItem("currentUser");
@@ -51,7 +39,7 @@ export function ChatRoom() {
         const currentUserId = currentUser?.id || emptyGuid;
         const fetchSuggestedUsers = async () => {
             try {
-                const response = await fetch(`http://localhost:5137/api/Users?currentUserId=${currentUserId}&limit=20`);
+                const response = await fetch(`/api/Users?currentUserId=${currentUserId}&limit=20`);
 
                 if (response.ok) {
                     const data = await response.json();
@@ -69,7 +57,6 @@ export function ChatRoom() {
     }, [currentUser.id]);
 
     useEffect(() => {
-        const baseUrl = "http://localhost:5137";
         const emptyGuid = "00000000-0000-0000-0000-000000000000";
         const currentUserId = currentUser?.id || emptyGuid;
 
@@ -81,7 +68,7 @@ export function ChatRoom() {
             setIsSearching(true);
             try {
                 const response = await fetch(
-                    `${baseUrl}/api/Users/search?searchTerm=${encodeURIComponent(searchQuery)}&currentUserId=${currentUserId}&limit=5`
+                    `/api/Users/search?searchTerm=${encodeURIComponent(searchQuery)}&currentUserId=${currentUserId}&limit=5`
                 );
                 if (response.ok) {
                     const data = await response.json();
@@ -101,9 +88,15 @@ export function ChatRoom() {
         return () => clearTimeout(timeoutId);
     }, [searchQuery, currentUser]);
 
-    const handleSelectUser = (user: SearchUserResult) => {
-        console.log("Chọn user:", user);
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
+    useEffect(() => {
+        scrollToBottom();
+    }, [realtimeMessages]);
+
+    const handleSelectUser = async (user: SearchUserResult) => {
         setSelectedFriend({
             id: user.userId || user.id,
             name: user.displayName || user.username,
@@ -115,6 +108,39 @@ export function ChatRoom() {
         setSearchResults([]);
 
         setRealtimeMessages([]);
+
+        const token = localStorage.getItem("accessToken");
+        if (token && currentUser.id) {
+            try {
+                const response = await fetch(
+                    `/api/Chat/history?otherUserId=${user.userId || user.id}&limit=50`,
+                    {
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        }
+                    }
+                );
+
+                if (response.ok) {
+                    const history = await response.json();
+
+                    const formattedMessages: MessageDto[] = history.map((msg: any) => ({
+                        sender_name: msg.sender_name,
+                        sender_id: msg.sender_id,
+                        content: msg.content,
+                        timestamp: msg.sent_time,
+                        isSent: msg.sender_id === currentUser.id
+                    }));
+
+                    setRealtimeMessages(formattedMessages);
+                    console.log(`Loaded ${formattedMessages.length} messages from history`);
+                } else {
+                    console.error("Failed to load chat history");
+                }
+            } catch (error) {
+                console.error("Error loading chat history:", error);
+            }
+        }
     };
 
     const handleSend = async () => {
@@ -140,7 +166,7 @@ export function ChatRoom() {
         setInput("");
 
         try {
-            const response = await fetch("http://localhost:5137/api/Chat", {
+            const response = await fetch("/api/Chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -168,13 +194,10 @@ export function ChatRoom() {
     };
 
     return (
-        /* === CONTAINER BAO QUÁT TOÀN BỘ MÀN HÌNH === */
         <div className="h-screen bg-gradient-to-br from-black via-gray-900 to-green-950 flex overflow-hidden">
 
-            {/* === [CỘT TRÁI]: SIDEBAR (TÌM KIẾM & DANH SÁCH USER) === */}
             <div className="w-80 bg-gray-900/50 backdrop-blur-sm border-r border-green-500/20 flex flex-col">
 
-                {/* 1. Header của Sidebar (Logo + Ô input tìm kiếm) */}
                 <div className="p-6 border-b border-gray-800">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
@@ -195,7 +218,6 @@ export function ChatRoom() {
                     </div>
                 </div>
 
-                {/* 2. Body của Sidebar (Kết quả tìm kiếm hoặc Gợi ý) */}
                 <div className="flex-1 overflow-y-auto">
                     {searchQuery ? (
                         <div className="p-2">
@@ -203,7 +225,6 @@ export function ChatRoom() {
                             {isSearching ? (
                                 <p className="text-center text-gray-500 py-4">Đang tìm...</p>
                             ) : searchResults.length > 0 ? (
-                                /* Render danh sách user tìm thấy */
                                 searchResults.map((user) => (
                                     <button
                                         key={user.id || user.userId}
@@ -263,17 +284,10 @@ export function ChatRoom() {
                     )}
                 </div>
             </div>
-                        
-                        
-                        
-                        
-                       
 
-            {/* === [CỘT PHẢI]: KHUNG CHAT CHÍNH === */}
             <div className="flex-1 flex flex-col">
                 {selectedFriend ? (
                     <>
-                        {/* A. Header Chat (Thông tin người đang chat cùng) */}
                         <div className="h-16 bg-gray-900/30 border-b border-gray-800 flex items-center justify-between px-6">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-lg">
@@ -290,7 +304,6 @@ export function ChatRoom() {
                             <MoreVertical className="text-gray-400 cursor-pointer" />
                         </div>
 
-                        {/* B. Khu vực hiển thị tin nhắn (List Message) */}
                         <div className="flex-1 overflow-y-auto p-6 space-y-4">
                             {realtimeMessages.length === 0 ? (
                                 <div className="text-center text-gray-500 mt-10">
@@ -303,40 +316,38 @@ export function ChatRoom() {
                                         className={`flex ${msg.isSent ? 'justify-end' : 'justify-start'}`}
                                     >
                                         <div
-                                            className={`max-w-md px-4 py-2 rounded-2xl break-words ${
-                                                msg.isSent
-                                                    ? 'bg-green-600 text-white' // Tin nhắn mình gửi (Xanh)
-                                                    : 'bg-gray-800 text-gray-200' // Tin nhắn người khác (Xám)
-                                            }`}
+                                            className={`max-w-md px-4 py-2 rounded-2xl break-words ${msg.isSent
+                                                ? 'bg-green-600 text-white'
+                                                : 'bg-gray-800 text-gray-200'
+                                                }`}
                                         >
                                             <p className="text-sm">{msg.content}</p>
                                         </div>
                                     </div>
                                 ))
                             )}
+                            <div ref={messagesEndRef} />
                         </div>
 
-                        {/* C. Khu vực nhập liệu (Input + Nút gửi) */}
-                        <div className="p-4 bg-gray-900/50 border-t border-gray-800 flex gap-2">
+                        <div className="mx-6 mb-8 p-4 bg-gray-900/80 backdrop-blur-xl border border-white/5 rounded-3xl flex gap-3 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-green-500/15 hover:border-green-500/30 group">
                             <input
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyPress={handleKeyPress}
                                 placeholder="Nhập tin nhắn..."
-                                className="flex-1 bg-gray-800 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-1 focus:ring-green-500"
+                                className="flex-1 bg-gray-800/50 text-white px-6 py-3 rounded-2xl focus:outline-none focus:ring-1 focus:ring-green-500/50 border border-white/5 placeholder-gray-500 transition-all"
                             />
                             <button
                                 onClick={handleSend}
                                 disabled={!input.trim()}
-                                className="p-2 bg-green-600 rounded-full hover:bg-green-500 transition disabled:opacity-50"
+                                className="p-4 bg-green-600 rounded-2xl hover:bg-green-500 transition-all duration-300 active:scale-90 disabled:opacity-50 shadow-lg shadow-green-500/20 group-hover:shadow-green-500/40 flex items-center justify-center"
                             >
                                 <Send className="w-5 h-5 text-white" />
                             </button>
                         </div>
                     </>
                 ) : (
-                    /* D. Màn hình chờ (Placeholder) khi chưa chọn user nào */
                     <div className="flex-1 flex flex-col items-center justify-center text-gray-500">
                         <MessageSquare className="w-16 h-16 mb-4 opacity-20" />
                         <p>Chọn một người để bắt đầu chat</p>

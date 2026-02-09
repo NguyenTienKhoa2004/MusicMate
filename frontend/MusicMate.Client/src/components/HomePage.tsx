@@ -73,12 +73,12 @@ export function HomePage() {
             setShowDropdown(true);
 
             try {
-                const baseUrl = "http://localhost:5137";
+                //const baseUrl = "http://localhost:5137";
                 const emptyGuid = "00000000-0000-0000-0000-000000000000";
                 const currentUserId = currentUser?.id || emptyGuid;
 
                 const response = await fetch(
-                    `${baseUrl}/api/Users/search?searchTerm=${encodeURIComponent(searchQuery)}&currentUserId=${currentUserId}&limit=5`
+                    `/api/Users/search?searchTerm=${encodeURIComponent(searchQuery)}&currentUserId=${currentUserId}&limit=5`
                 );
 
                 if (response.ok) {

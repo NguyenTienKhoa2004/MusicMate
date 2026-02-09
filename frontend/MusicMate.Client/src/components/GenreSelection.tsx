@@ -16,7 +16,7 @@ export function GenreSelection() {
 
     const fetchGenres = async () => {
         try {
-            const response = await fetch("http://localhost:5137/api/Genres");
+            const response = await fetch("/api/Genres");
             const data = await response.json();
             setGenres(data);
         } catch (err) {
@@ -47,7 +47,7 @@ export function GenreSelection() {
 
         try {
             const token = localStorage.getItem("accessToken");
-            const response = await fetch("http://localhost:5137/api/Genres/set-favorites", {
+            const response = await fetch("/api/Genres/set-favorites", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

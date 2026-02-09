@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using MusicMate.Application.Features.Chat.Commands;
+using MusicMate.Application.Features.Chat.Queries;
 using MusicMate.Application.Features.Chat.Requests;
 
 namespace MusicMate.API.Controllers;
@@ -28,6 +29,25 @@ public class ChatController(IMediator mediator) : ControllerBase
         var command = new SendMessageCommand(request, sender_id);
 
         var result = await mediator.Send(command);
+        
+        return Ok(result);
+    }
+
+    [HttpGet("history")]
+    [Authorize]
+    public async Task<IActionResult> GetChatHistory([FromQuery] Guid otherUserId, [FromQuery] int limit = 50)
+    {
+        var user_id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        
+        if (string.IsNullOrEmpty(user_id))
+        {
+            return Unauthorized("Hãy Đăng Nhập.");
+        }
+
+        Guid currentUserId = Guid.Parse(user_id);
+        var query = new GetChatHistoryQuery(currentUserId, otherUserId, limit);
+
+        var result = await mediator.Send(query);
         
         return Ok(result);
     }

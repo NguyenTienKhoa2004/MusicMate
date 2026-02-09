@@ -20,14 +20,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/home"
-                    element={
-                        <ProtectedRoute>
-                            <HomePage />
-                        </ProtectedRoute>
-                    }
-                />
+                <Route path="/home" element={<HomePage />} />
                 
                 <Route path="/" element={<Navigate to="/home" replace />} />
 

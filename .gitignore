@@ -67,10 +67,17 @@ appsettings.Local.json
 /wwwroot/dist/
 /publish/
 /deploy/
+/publish-api/
+**/publish-api/
 
-# Node / Frontend (nếu có Blazor WASM hoặc React sau này)
-/node_modules/
-/wwwroot/node_modules/
+# Node / Frontend 
+node_modules/
+.eslintcache
+.stylelintcache
+dist/
+build/
+.pnp/
+.pnp.js
 
 # Mac OS
 .DS_Store
@@ -80,5 +87,5 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Migration backup (nếu không muốn commit)
+# Migration backup 
 **/Migrations/*_backup.cs
